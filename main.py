@@ -157,10 +157,10 @@ def get_pegast_tez_groups():
                 "failed to get extra nevylet kupala china 3000: no present match",
             ],
             "tour dropped by rules": [
-                "tour dropped by rules"
+                "tour dropped by rules",
             ],
             "error finding route in cache": [
-                "error finding route in cache"
+                "error finding route in cache",
             ],
             "failed to get rate": [
                 "no rate",
@@ -169,7 +169,7 @@ def get_pegast_tez_groups():
                 "different origin and return places",
             ],
             "package and route have different operators": [
-                "package and route have different operators"
+                "package and route have different operators",
             ],
 
             "hotel has unavailable status": [
@@ -179,11 +179,17 @@ def get_pegast_tez_groups():
                 "invalid flight number",
             ],
             "no children to pick from": [
-                "no children to pick from"
+                "no children to pick from",
             ],
             "response unsuccessful with code: 404": [
-                "response unsuccessful with code: 404"
+                "response unsuccessful with code: 404",
             ],
+            "Требуется авторизация:": [
+                "Full authentication is required to access this resource",
+            ],
+            "failed to get \"actualization:tez:flight-rules\" from redis" : [
+                "failed to get \"actualization:tez:flight-rules\" string: redis: nil",
+            ]
         }),
         "Неизвестно чьи ошибки": OrderedDict({
             "empty routes after cast": [
@@ -200,6 +206,9 @@ def get_pegast_tez_groups():
             "route not found in operator flights": [
                 "route not found in operator flights"
             ],
+            "NOREPLICAS Not enough good replicas to write":[
+                "NOREPLICAS Not enough good replicas to write"
+            ]
 
         }),
         "Ошибки ТО": OrderedDict({
@@ -207,6 +216,7 @@ def get_pegast_tez_groups():
                 "context deadline exceeded",
                 "connection timed out",
                 "connection refused",
+                "connection reset by peer",
                 "context cancelled",
                 "i/o timeout",
                 "Error 9001 (HY000): Max connect timeout reached while reaching hostgroup"
@@ -234,6 +244,7 @@ def get_pegast_tez_groups():
                 "response unsuccessful with code: code=[0], [Error from supplier (Unknown supplier error)]",
                 "response unsuccessful with code: code=[0], [Error from supplier (Unknown accel aero error)]",
                 "response unsuccessful with code: code=[0], [Error from supplier (Внутренняя ошибка сервиса. Обратитесь в службу технической поддержки",
+                "response unsuccessful with code: code=[0], [Error from supplier (Внутренняя ошибка сервера",
                 "response unsuccessful with code: systemError",
                 "code=[0, 1030], [Error from supplier (Internal service error. Please contact support.)",
                 "response unsuccessful with code: Произошла системная ошибка:"
@@ -384,6 +395,7 @@ def get_dynamic_groups():
                 "document number is invalid",
                 "invalid document number",
                 "one or more tourists got the same documents info",
+                "empty passport number",
             ],
             "Невалидная почта": [
                 "validate client params err: empty email"
@@ -406,7 +418,8 @@ def get_dynamic_groups():
                 "while changing route: tour expired",
                 "by LT: One or more errors occurred. (Error from supplier)",
                 "by LT: 176242988882209831 Code - 0",
-                "Произошла ошибка при выполнении запроса актуализации"
+                "Произошла ошибка при выполнении запроса актуализации",
+                "while selecting and concretizing route: tour expired",
             ],
             "birth certificate cannot be used": [
               "birth certificate cannot be used after age",
