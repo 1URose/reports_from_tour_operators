@@ -124,8 +124,8 @@ def print_detailed_tables(counters, unclassified, group_totals, overall_total):
             continue
         print(group_name)
         for key, value in sorted(group_counts.items(), key=lambda x: (-x[1], x[0])):
-            print(f"- {key} - {value} шт")
-            # print(f"{key}\t{value}")
+            # print(f"- {key} - {value} шт")
+            print(f"{key}\t{value}")
         print()
 
     if unclassified:
@@ -170,6 +170,12 @@ def get_pegast_tez_groups():
             ],
             "package and route have different operators": [
                 "package and route have different operators",
+            ],
+            "error writing to cache":[
+                "failed to insert routes: server selection error: server selection timeout, current topology: { Type: ReplicaSetNoPrimary",
+                "failed to insert routes: (InterruptedDueToReplStateChange) operation was interrupted",
+                "failed to insert routes: (NotWritablePrimary) not primary",
+                "error writing to cache: error in routes: failed to reset fresh routes IDs: failed to reset fresh routes IDs: dial tcp 62.84.125.225:6380: i/o timeout"
             ],
 
             "hotel has unavailable status": [
