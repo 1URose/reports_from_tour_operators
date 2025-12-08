@@ -199,6 +199,7 @@ def get_pegast_tez_groups():
                 "connect: no route to host",
                 "failed to update package: invalid connection",
                 "failed to select client good state orders: invalid connection",
+                "failed to get rate from db: invalid connection",
             ],
             "failed to cast routes: empty result routes": [
                 "failed to cast routes: empty result routes",
@@ -208,8 +209,12 @@ def get_pegast_tez_groups():
             ],
             "NOREPLICAS Not enough good replicas to write":[
                 "NOREPLICAS Not enough good replicas to write"
-            ]
-
+            ],
+            "failed to insert routes to cache": [
+                "failed to insert routes: (InterruptedDueToReplStateChange) operation was interrupted",
+                "failed to insert routes: (NotWritablePrimary) not primary",
+                "failed to insert routes: (NotWritablePrimary) Not primary so we cannot begin or continue a transaction",
+            ],
         }),
         "Ошибки ТО": OrderedDict({
             "context canceled": [
@@ -225,9 +230,6 @@ def get_pegast_tez_groups():
             "InvalidBooking": [
                 "fail in get insurance: api response error: InvalidBooking"
             ],
-            "Too many requests": [
-                "Error from supplier (Too many requests)",
-            ],
             "...ORA-06512: at line 1": [
                 "ORA-06512",
             ],
@@ -240,14 +242,19 @@ def get_pegast_tez_groups():
                 "response unsuccessful with code: 502",
                 "The server sent HTTP status code 503",
                 "response unsuccessful: code 503",
+                "response unsuccessful with code: systemError",
+                "The server sent HTTP status code 503: Service Unavailable"
+            ],
+            "code=[0]": [
                 "response unsuccessful with code: code=[0], [Error from supplier (Internal service error. Please contact support.)]",
                 "response unsuccessful with code: code=[0], [Error from supplier (Unknown supplier error)]",
                 "response unsuccessful with code: code=[0], [Error from supplier (Unknown accel aero error)]",
                 "response unsuccessful with code: code=[0], [Error from supplier (Внутренняя ошибка сервиса. Обратитесь в службу технической поддержки",
                 "response unsuccessful with code: code=[0], [Error from supplier (Внутренняя ошибка сервера",
-                "response unsuccessful with code: systemError",
                 "code=[0, 1030], [Error from supplier (Internal service error. Please contact support.)",
-                "response unsuccessful with code: Произошла системная ошибка:"
+                "response unsuccessful with code: code=[0], [Error from supplier (No availability)]",
+                "response unsuccessful with code: code=[0, 1002], [Error from supplier (No availability), No response from supplier]",
+                "response unsuccessful with code: code=[0], [Error from supplier (Too many requests)]",
             ],
             "SystemTemporarilyUnavailable": [
                 "SystemTemporarilyUnavailable"
@@ -615,10 +622,12 @@ def main():
 
     print("------------------------------------------")
 
-
     rows = read_csv_rows(user_path)
-    counters, unclassified, group_totals, overall_total = process_errors(error_groups, rows)
 
+    # raw_total = sum(count for _, count in rows)
+    # print(f"Всего записей по данным CSV: {raw_total}")
+
+    counters, unclassified, group_totals, overall_total = process_errors(error_groups, rows)
     print_detailed_tables(counters, unclassified, group_totals, overall_total)
 
 
