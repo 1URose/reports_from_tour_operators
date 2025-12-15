@@ -290,7 +290,7 @@ dmypy.json
 *.json
 *.xml
 *.txt
-
+Edit visualization.csv
 # Cython debug symbols
 cython_debug/
 

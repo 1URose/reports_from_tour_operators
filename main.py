@@ -223,6 +223,9 @@ def get_pegast_tez_groups():
             ],
         }),
         "Ошибки ТО": OrderedDict({
+            "failed to verify certificate": [
+                "failed to verify certificate: x509: certificate has expired or is not yet valid",
+            ],
             "context canceled": [
                 "context deadline exceeded",
                 "connection timed out",
@@ -235,6 +238,9 @@ def get_pegast_tez_groups():
             ],
             "InvalidBooking": [
                 "fail in get insurance: api response error: InvalidBooking"
+            ],
+            "CannotFindEnoughResponsibleAdultsForAllInfants": [
+                "fail in construct booking: api response error: CannotFindEnoughResponsibleAdultsForAllInfants",
             ],
             "...ORA-06512: at line 1": [
                 "ORA-06512",
@@ -257,10 +263,24 @@ def get_pegast_tez_groups():
                 "response unsuccessful with code: code=[0], [Error from supplier (Unknown accel aero error)]",
                 "response unsuccessful with code: code=[0], [Error from supplier (Внутренняя ошибка сервиса. Обратитесь в службу технической поддержки",
                 "response unsuccessful with code: code=[0], [Error from supplier (Внутренняя ошибка сервера",
-                "code=[0, 1030], [Error from supplier (Internal service error. Please contact support.)",
                 "response unsuccessful with code: code=[0], [Error from supplier (No availability)]",
-                "response unsuccessful with code: code=[0, 1002], [Error from supplier (No availability), No response from supplier]",
                 "response unsuccessful with code: code=[0], [Error from supplier (Too many requests)]",
+                "response unsuccessful with code: code=[0, 0], [Error from supplier (Too many requests), Error from supplier (Unknown accel aero error)]",
+            ],
+            "code=[1000]" : [
+                "response unsuccessful with code: code=[1000], [Infants count can not be more than adult count]",
+            ],
+            "code=[1002]": [
+                "response unsuccessful with code: code=[1002], [Error while contacting the supplier. (42|Application|Too many opened conversations. Please close them and try again.)]",
+            ],
+            "code=[1030]": [
+                "response unsuccessful with code: code=[1030], [Received an unexpected EOF or 0 bytes from the transport stream.]",
+            ],
+            "code=[0, 1002]": [
+                "response unsuccessful with code: code=[0, 1002], [Error from supplier (No availability), No response from supplier]",
+            ],
+            "code=[0, 1030]": [
+                "code=[0, 1030], [Error from supplier (Internal service error. Please contact support.)",
             ],
             "SystemTemporarilyUnavailable": [
                 "SystemTemporarilyUnavailable"
@@ -283,9 +303,7 @@ def get_pegast_tez_groups():
             "concretized route has changed id": [
                 "concretized route has changed id",
             ],
-            "code=[1002]": [
-                "code=[1002",
-            ],
+
             "Пустой ответ": [
                 "api response error: None",
                 "error CollectAllFlights tour: %!w(<nil>)"
@@ -303,9 +321,7 @@ def get_pegast_tez_groups():
                 "response unsuccessful with code: Unauthorized",
                 "request failed with supplier error: Пользователь не авторизован"
             ],
-            "code=[1030]": [
-                "code=[1030",
-            ],
+
             "response build_order unsuccessful with err Post": [
                 "response build_order unsuccessful with err Post",
             ],
@@ -333,8 +349,9 @@ def get_dynamic_groups():
             "pg_INSERT_in_read-only_transaction": [
                 "pq: cannot execute INSERT in a read-only transaction",
             ],
-            "Дублирование значений": [
+            "duplicate key value violates unique constraint": [
                 "idx_bookings_digest",
+                "order_credentials_pkey"
             ],
             "pg_unexpected_message": [
                 "pq: unexpected message",
