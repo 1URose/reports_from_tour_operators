@@ -1,4 +1,3 @@
-# errors_report_csv.py  — CSV only, no charts, merged summary for Prebook+Dynamic
 import os
 import csv
 from collections import defaultdict, OrderedDict
@@ -106,19 +105,15 @@ def _merged_group_totals_for_summary(group_totals: "OrderedDict[str, int]") -> "
     for k, v in group_totals.items():
         if k == prebook_key or k == dynamic_key:
             if not merged_done:
-                # вставляем объединённую строку на месте первой встреченной из двух
                 out[merged_label] = merged_value
                 merged_done = True
-            # вторую из них пропускаем
             continue
         out[k] = v
 
-    # если обеих не было, ничего не меняем; если была только одна — она уже стала merged_label с тем же значением
     return out
 
 
 def print_detailed_tables(counters, unclassified, group_totals, overall_total):
-    # Детали по группам (без локальных "Всего: ...")
     for group_name, group_counts in counters.items():
         if not group_counts:
             continue
@@ -134,7 +129,6 @@ def print_detailed_tables(counters, unclassified, group_totals, overall_total):
             print(f"- {key} - {value} шт")
         print()
 
-    # Свод по группам — с объединением Prebook+Dynamic
     print("==== СВОД ПО ГРУППАМ ====")
     merged_totals = _merged_group_totals_for_summary(group_totals)
 
@@ -223,6 +217,9 @@ def get_pegast_tez_groups():
             ],
         }),
         "Ошибки ТО": OrderedDict({
+            "ParametersNotValid": [
+                "fail in construct booking: api response error: ParametersNotValid"
+            ],
             "failed to verify certificate": [
                 "failed to verify certificate: x509: certificate has expired or is not yet valid",
             ],
@@ -251,6 +248,7 @@ def get_pegast_tez_groups():
             "internal server error": [
                 "code 502",
                 "response unsuccessful with code: 500",
+                "Произошла системная ошибка: null",
                 "response unsuccessful with code: 502",
                 "The server sent HTTP status code 503",
                 "response unsuccessful: code 503",
