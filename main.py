@@ -273,6 +273,7 @@ def get_pegast_tez_groups():
             ],
             "code=[1030]": [
                 "response unsuccessful with code: code=[1030], [Received an unexpected EOF or 0 bytes from the transport stream.]",
+                "response unsuccessful with code: code=[1030], [The response ended prematurely. (ResponseEnded)]",
             ],
             "code=[0, 1002]": [
                 "response unsuccessful with code: code=[0, 1002], [Error from supplier (No availability), No response from supplier]",
@@ -591,6 +592,10 @@ def get_dynamic_groups():
             ],
             "no routes found": [
                 "no routes found",
+            ],
+            "empty booking response":
+            [
+                "err check prebook: empty booking response",
             ],
             "Запрашиваемые рейсы неактуальны": [
                 "Запрашиваемые рейсы для OfferId"
