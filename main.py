@@ -119,8 +119,8 @@ def print_detailed_tables(counters, unclassified, group_totals, overall_total):
             continue
         print(group_name)
         for key, value in sorted(group_counts.items(), key=lambda x: (-x[1], x[0])):
-            print(f"- {key} - {value} шт")
-            # print(f"{key}\t{value}")
+            # print(f"- {key} - {value} шт")
+            print(f"{key}\t{value}")
         print()
 
     if unclassified:
@@ -149,6 +149,7 @@ def get_pegast_tez_groups():
             "no present match": [
                 "failed to get extra kupala sri lanka: no present match",
                 "failed to get extra nevylet kupala china 3000: no present match",
+                "failed to get extra gelios georgia ski: no present match"
             ],
             "tour dropped by rules": [
                 "tour dropped by rules",
@@ -189,18 +190,21 @@ def get_pegast_tez_groups():
             ],
             "failed to get \"actualization:tez:flight-rules\" from redis" : [
                 "failed to get \"actualization:tez:flight-rules\" string: redis: nil",
-            ]
-        }),
-        "Неизвестно чьи ошибки": OrderedDict({
-            "empty routes after cast": [
-                "empty routes after cast",
             ],
             "Ошибка с соединением": [
                 "connect: no route to host",
                 "failed to update package: invalid connection",
                 "failed to select client good state orders: invalid connection",
                 "failed to get rate from db: invalid connection",
+                "error getting package by id: query failed: invalid connection",
+                "rpc error: code = Unavailable desc = upstream connect error or disconnect/reset before headers. reset reason: connection timeout"
             ],
+        }),
+        "Неизвестно чьи ошибки": OrderedDict({
+            "empty routes after cast": [
+                "empty routes after cast",
+            ],
+
             "failed to cast routes: empty result routes": [
                 "failed to cast routes: empty result routes",
             ],
@@ -264,12 +268,15 @@ def get_pegast_tez_groups():
                 "response unsuccessful with code: code=[0], [Error from supplier (No availability)]",
                 "response unsuccessful with code: code=[0], [Error from supplier (Too many requests)]",
                 "response unsuccessful with code: code=[0, 0], [Error from supplier (Too many requests), Error from supplier (Unknown accel aero error)]",
+                "response unsuccessful with code: code=[0], [Error from supplier (Invalid Place of Destination Code )]",
+                "response unsuccessful with code: code=[0], [Error from supplier (Search limit has been reached)]",
             ],
             "code=[1000]" : [
                 "response unsuccessful with code: code=[1000], [Infants count can not be more than adult count]",
             ],
             "code=[1002]": [
                 "response unsuccessful with code: code=[1002], [Error while contacting the supplier. (42|Application|Too many opened conversations. Please close them and try again.)]",
+                "response unsuccessful with code: code=[1002], [An unexpected error occurred, please contact technical support.]",
             ],
             "code=[1030]": [
                 "response unsuccessful with code: code=[1030], [Received an unexpected EOF or 0 bytes from the transport stream.]",
@@ -280,6 +287,8 @@ def get_pegast_tez_groups():
             ],
             "code=[0, 1030]": [
                 "code=[0, 1030], [Error from supplier (Internal service error. Please contact support.)",
+                "response unsuccessful with code: code=[1030], [Unable to read data from the transport connection: An existing connection was forcibly closed by the remote host..]",
+                "response unsuccessful with code: code=[1030], [Unable to read data from the transport connection: Удаленный хост принудительно разорвал существующее подключение..]",
             ],
             "SystemTemporarilyUnavailable": [
                 "SystemTemporarilyUnavailable"
@@ -425,6 +434,7 @@ def get_dynamic_groups():
                 "invalid document number",
                 "one or more tourists got the same documents info",
                 "empty passport number",
+                "non-expired passport required"
             ],
             "Невалидная почта": [
                 "validate client params err: empty email"
