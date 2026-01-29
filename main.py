@@ -149,6 +149,7 @@ def get_pegast_tez_groups():
             "no present match": [
                 "failed to get extra kupala sri lanka: no present match",
                 "failed to get extra nevylet kupala china 3000: no present match",
+                "failed to get extra gelios vietnam: no present match"
                 "failed to get extra gelios georgia ski: no present match"
             ],
             "tour dropped by rules": [
@@ -170,7 +171,9 @@ def get_pegast_tez_groups():
                 "failed to insert routes: server selection error: server selection timeout, current topology: { Type: ReplicaSetNoPrimary",
                 "failed to insert routes: (InterruptedDueToReplStateChange) operation was interrupted",
                 "failed to insert routes: (NotWritablePrimary) not primary",
-                "error writing to cache: error in routes: failed to reset fresh routes IDs: failed to reset fresh routes IDs: dial tcp 62.84.125.225:6380: i/o timeout"
+                "failed to reset fresh routes IDs: EOF",
+                "error writing to cache: error in routes: failed to reset fresh routes IDs: failed to reset fresh routes IDs: dial tcp 62.84.125.225:6380: i/o timeout",
+                "failed to update duplicates created_at: failed to perform bulk write operation: must provide at least one element in input slice",
             ],
 
             "hotel has unavailable status": [
@@ -221,6 +224,13 @@ def get_pegast_tez_groups():
             ],
         }),
         "Ошибки ТО": OrderedDict({
+            "invalid_xml_in_response": [
+                "response build_order decode unsuccessful with err xml unmarshal error",
+            ],
+
+            "failed to cast routes: empty result routes": [
+                "failed to cast routes: empty result routes",
+            ],
             "ParametersNotValid": [
                 "fail in construct booking: api response error: ParametersNotValid"
             ],
@@ -233,6 +243,7 @@ def get_pegast_tez_groups():
                 "connection refused",
                 "connection reset by peer",
                 "context cancelled",
+                "context canceled",
                 "i/o timeout",
                 "Error 9001 (HY000): Max connect timeout reached while reaching hostgroup"
 
@@ -270,6 +281,7 @@ def get_pegast_tez_groups():
                 "response unsuccessful with code: code=[0, 0], [Error from supplier (Too many requests), Error from supplier (Unknown accel aero error)]",
                 "response unsuccessful with code: code=[0], [Error from supplier (Invalid Place of Destination Code )]",
                 "response unsuccessful with code: code=[0], [Error from supplier (Search limit has been reached)]",
+                "response unsuccessful with code: code=[0], [Error from supplier ( )]",
             ],
             "code=[1000]" : [
                 "response unsuccessful with code: code=[1000], [Infants count can not be more than adult count]",
@@ -277,10 +289,14 @@ def get_pegast_tez_groups():
             "code=[1002]": [
                 "response unsuccessful with code: code=[1002], [Error while contacting the supplier. (42|Application|Too many opened conversations. Please close them and try again.)]",
                 "response unsuccessful with code: code=[1002], [An unexpected error occurred, please contact technical support.]",
+                "response unsuccessful with code: code=[1002], [No response from supplier]",
             ],
             "code=[1030]": [
                 "response unsuccessful with code: code=[1030], [Received an unexpected EOF or 0 bytes from the transport stream.]",
                 "response unsuccessful with code: code=[1030], [The response ended prematurely. (ResponseEnded)]",
+                "response unsuccessful with code: code=[1030], [Authentication failed, see inner exception.]",
+                "response unsuccessful with code: code=[1030], [Unable to read data from the transport connection: An existing connection was forcibly closed by the remote host..]",
+                "response unsuccessful with code: code=[1030], [Unable to read data from the transport connection: Удаленный хост принудительно разорвал существующее подключение..]",
             ],
             "code=[0, 1002]": [
                 "response unsuccessful with code: code=[0, 1002], [Error from supplier (No availability), No response from supplier]",
@@ -289,6 +305,9 @@ def get_pegast_tez_groups():
                 "code=[0, 1030], [Error from supplier (Internal service error. Please contact support.)",
                 "response unsuccessful with code: code=[1030], [Unable to read data from the transport connection: An existing connection was forcibly closed by the remote host..]",
                 "response unsuccessful with code: code=[1030], [Unable to read data from the transport connection: Удаленный хост принудительно разорвал существующее подключение..]",
+            ],
+            "code=[1014]" : [
+                "response unsuccessful with code: code=[1014], [Error from supplier (JOURNEY SERVER: System problem (check OID))]",
             ],
             "SystemTemporarilyUnavailable": [
                 "SystemTemporarilyUnavailable"
@@ -438,7 +457,10 @@ def get_dynamic_groups():
             ],
             "Невалидная почта": [
                 "validate client params err: empty email"
-            ]
+            ],
+            "Невалидный id национальности": [
+                "validate tourist params err: empty nationality ID"
+            ],
         }),
 
         # Unsuccessful Prebook
