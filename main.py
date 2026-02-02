@@ -119,8 +119,8 @@ def print_detailed_tables(counters, unclassified, group_totals, overall_total):
             continue
         print(group_name)
         for key, value in sorted(group_counts.items(), key=lambda x: (-x[1], x[0])):
-            # print(f"- {key} - {value} шт")
-            print(f"{key}\t{value}")
+            print(f"- {key} - {value} шт")
+            # print(f"{key}\t{value}")
         print()
 
     if unclassified:
@@ -226,6 +226,7 @@ def get_pegast_tez_groups():
         "Ошибки ТО": OrderedDict({
             "invalid_xml_in_response": [
                 "response build_order decode unsuccessful with err xml unmarshal error",
+                "response decode unsuccessful with err xml unmarshal error: xml: (*api.AuthorizeResponse).UnmarshalXML did not consume entire <html> element",
             ],
 
             "failed to cast routes: empty result routes": [
@@ -268,7 +269,10 @@ def get_pegast_tez_groups():
                 "The server sent HTTP status code 503",
                 "response unsuccessful: code 503",
                 "response unsuccessful with code: systemError",
-                "The server sent HTTP status code 503: Service Unavailable"
+                "The server sent HTTP status code 503: Service Unavailable",
+                "response unsuccessful with code: 503",
+                "response unsuccessful with code: Произошла системная ошибка: Session/EntityManager is closed",
+                "response unsuccessful with code: Nemo currency is null!",
             ],
             "code=[0]": [
                 "response unsuccessful with code: code=[0], [Error from supplier (Internal service error. Please contact support.)]",
@@ -282,6 +286,7 @@ def get_pegast_tez_groups():
                 "response unsuccessful with code: code=[0], [Error from supplier (Invalid Place of Destination Code )]",
                 "response unsuccessful with code: code=[0], [Error from supplier (Search limit has been reached)]",
                 "response unsuccessful with code: code=[0], [Error from supplier ( )]",
+                "response unsuccessful with code: code=[0, 0], [Error from supplier (Internal service error. Please contact support.), Error from supplier ( )]",
             ],
             "code=[1000]" : [
                 "response unsuccessful with code: code=[1000], [Infants count can not be more than adult count]",
@@ -297,6 +302,7 @@ def get_pegast_tez_groups():
                 "response unsuccessful with code: code=[1030], [Authentication failed, see inner exception.]",
                 "response unsuccessful with code: code=[1030], [Unable to read data from the transport connection: An existing connection was forcibly closed by the remote host..]",
                 "response unsuccessful with code: code=[1030], [Unable to read data from the transport connection: Удаленный хост принудительно разорвал существующее подключение..]",
+                "response unsuccessful with code: code=[1030], [A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.]"
             ],
             "code=[0, 1002]": [
                 "response unsuccessful with code: code=[0, 1002], [Error from supplier (No availability), No response from supplier]",
