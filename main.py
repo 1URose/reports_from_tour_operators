@@ -119,8 +119,8 @@ def print_detailed_tables(counters, unclassified, group_totals, overall_total):
             continue
         print(group_name)
         for key, value in sorted(group_counts.items(), key=lambda x: (-x[1], x[0])):
-            print(f"- {key} - {value} шт")
-            # print(f"{key}\t{value}")
+            # print(f"- {key} - {value} шт")
+            print(f"{key}\t{value}")
         print()
 
     if unclassified:
@@ -143,19 +143,22 @@ def print_detailed_tables(counters, unclassified, group_totals, overall_total):
 def get_pegast_tez_groups():
     return OrderedDict({
         "Наши ошибки ": OrderedDict({
-            "package is expired": [
+            "write to read-only MySQL server": [ # Общая
+                "Error 1290 (HY000): The MySQL server is running with the --read-only option so it cannot execute this statement",
+            ],
+            "package is expired": [ # Общая
                 "package is expired",
             ],
-            "no present match": [
+            "no present match": [ # Общая
                 "failed to get extra kupala sri lanka: no present match",
                 "failed to get extra nevylet kupala china 3000: no present match",
                 "failed to get extra gelios vietnam: no present match"
                 "failed to get extra gelios georgia ski: no present match"
             ],
-            "tour dropped by rules": [
+            "tour dropped by rules": [ # Общая
                 "tour dropped by rules",
             ],
-            "error finding route in cache": [
+            "error finding route in cache": [ # Общая
                 "error finding route in cache",
             ],
             "failed to get rate": [
@@ -167,7 +170,7 @@ def get_pegast_tez_groups():
             "package and route have different operators": [
                 "package and route have different operators",
             ],
-            "error writing to cache":[
+            "error writing to cache":[ # Общая
                 "failed to insert routes: server selection error: server selection timeout, current topology: { Type: ReplicaSetNoPrimary",
                 "failed to insert routes: (InterruptedDueToReplStateChange) operation was interrupted",
                 "failed to insert routes: (NotWritablePrimary) not primary",
@@ -185,6 +188,7 @@ def get_pegast_tez_groups():
             "no children to pick from": [
                 "no children to pick from",
             ],
+
             "response unsuccessful with code: 404": [
                 "response unsuccessful with code: 404",
             ],
@@ -224,6 +228,9 @@ def get_pegast_tez_groups():
             ],
         }),
         "Ошибки ТО": OrderedDict({
+            "Не найдена авиакомпания": [
+                "response unsuccessful with code: Не найдена авиакомпания (carrier=C6)."  # TEZTOUR
+            ],
             "invalid_xml_in_response": [
                 "response build_order decode unsuccessful with err xml unmarshal error",
                 "response decode unsuccessful with err xml unmarshal error: xml: (*api.AuthorizeResponse).UnmarshalXML did not consume entire <html> element",
