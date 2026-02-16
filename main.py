@@ -119,8 +119,8 @@ def print_detailed_tables(counters, unclassified, group_totals, overall_total):
             continue
         print(group_name)
         for key, value in sorted(group_counts.items(), key=lambda x: (-x[1], x[0])):
-            # print(f"- {key} - {value} шт")
-            print(f"{key}\t{value}")
+            print(f"- {key} - {value} шт")
+            # print(f"{key}\t{value}")
         print()
 
     if unclassified:
@@ -188,6 +188,11 @@ def get_pegast_tez_groups():
             "no children to pick from": [
                 "no children to pick from",
             ],
+
+            "sql: no rows in result set": [
+              "query failed: sql: no rows in result set",
+            ],
+
 
             "response unsuccessful with code: 404": [
                 "response unsuccessful with code: 404",
@@ -294,6 +299,7 @@ def get_pegast_tez_groups():
                 "response unsuccessful with code: code=[0], [Error from supplier (Search limit has been reached)]",
                 "response unsuccessful with code: code=[0], [Error from supplier ( )]",
                 "response unsuccessful with code: code=[0, 0], [Error from supplier (Internal service error. Please contact support.), Error from supplier ( )]",
+                "response unsuccessful with code: code=[0], [Error from supplier (Invalid Place of Departure Code )]",
             ],
             "code=[1000]" : [
                 "response unsuccessful with code: code=[1000], [Infants count can not be more than adult count]",
@@ -309,7 +315,9 @@ def get_pegast_tez_groups():
                 "response unsuccessful with code: code=[1030], [Authentication failed, see inner exception.]",
                 "response unsuccessful with code: code=[1030], [Unable to read data from the transport connection: An existing connection was forcibly closed by the remote host..]",
                 "response unsuccessful with code: code=[1030], [Unable to read data from the transport connection: Удаленный хост принудительно разорвал существующее подключение..]",
-                "response unsuccessful with code: code=[1030], [A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.]"
+                "response unsuccessful with code: code=[1030], [A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.]",
+                "response unsuccessful with code: code=[1030], [Invalid not empty response. Status description: Bad Gateway]",
+                "response unsuccessful with code: code=[1030], [Invalid not empty response. Status description: Internal Server Error]"
             ],
             "code=[0, 1002]": [
                 "response unsuccessful with code: code=[0, 1002], [Error from supplier (No availability), No response from supplier]",
