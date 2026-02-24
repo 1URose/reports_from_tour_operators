@@ -119,8 +119,8 @@ def print_detailed_tables(counters, unclassified, group_totals, overall_total):
             continue
         print(group_name)
         for key, value in sorted(group_counts.items(), key=lambda x: (-x[1], x[0])):
-            print(f"- {key} - {value} шт")
-            # print(f"{key}\t{value}")
+            # print(f"- {key} - {value} шт")
+            print(f"{key}\t{value}")
         print()
 
     if unclassified:
@@ -152,8 +152,9 @@ def get_pegast_tez_groups():
             "no present match": [ # Общая
                 "failed to get extra kupala sri lanka: no present match",
                 "failed to get extra nevylet kupala china 3000: no present match",
-                "failed to get extra gelios vietnam: no present match"
-                "failed to get extra gelios georgia ski: no present match"
+                "failed to get extra gelios vietnam: no present match",
+                "failed to get extra gelios georgia ski: no present match",
+                "failed to get extra kupala vietnam: no present match",
             ],
             "tour dropped by rules": [ # Общая
                 "tour dropped by rules",
@@ -231,6 +232,9 @@ def get_pegast_tez_groups():
                 "failed to insert routes: (NotWritablePrimary) not primary",
                 "failed to insert routes: (NotWritablePrimary) Not primary so we cannot begin or continue a transaction",
             ],
+            "unexpected EOF": [
+                "packageBookingCreation failed: response unsuccessful with err Post \"https://api-ext.pegasys.pegast.com/PackageBookingCreation.svc\": unexpected EOF"
+            ]
         }),
         "Ошибки ТО": OrderedDict({
             "Не найдена авиакомпания": [
@@ -417,6 +421,9 @@ def get_dynamic_groups():
 
         # Internal Errors
         "Internal Errors": OrderedDict({
+            "unknown country ID: 255" : [
+                "failed to get native country: unknown ID: 255"
+            ],
             "route_not_found": [
                 "route not found",
             ],
@@ -503,8 +510,14 @@ def get_dynamic_groups():
                 "Произошла ошибка при выполнении запроса актуализации",
                 "while selecting and concretizing route: tour expired",
             ],
+            "document expires before end of travel": [
+                "prebook error: by LT: document expires before end of travel",
+            ],
             "birth certificate cannot be used": [
               "birth certificate cannot be used after age",
+            ],
+            "no route to host": [
+                "prebook error: by LT: no route to host",
             ],
             "fail_to_find_similar_component": [
                 "failed to find similar component",
