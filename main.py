@@ -119,8 +119,8 @@ def print_detailed_tables(counters, unclassified, group_totals, overall_total):
             continue
         print(group_name)
         for key, value in sorted(group_counts.items(), key=lambda x: (-x[1], x[0])):
-            # print(f"- {key} - {value} шт")
-            print(f"{key}\t{value}")
+            print(f"- {key} - {value} шт")
+            # print(f"{key}\t{value}")
         print()
 
     if unclassified:
@@ -291,6 +291,9 @@ def get_pegast_tez_groups():
                 "response unsuccessful with code: Nemo currency is null!",
             ],
             "code=[0]": [
+                "response unsuccessful with code: code=[0], [Error from supplier (Сервис временно недоступен. Повторите попытку через 60 секунд.)]",
+                "response unsuccessful with code: code=[0], [Error from supplier (Invalid Country Code )]",
+                "response unsuccessful with code: code=[0], [Error from supplier (Invalid Authorization )]",
                 "response unsuccessful with code: code=[0], [Error from supplier (Internal service error. Please contact support.)]",
                 "response unsuccessful with code: code=[0], [Error from supplier (Unknown supplier error)]",
                 "response unsuccessful with code: code=[0], [Error from supplier (Unknown accel aero error)]",
@@ -325,6 +328,7 @@ def get_pegast_tez_groups():
             ],
             "code=[0, 1002]": [
                 "response unsuccessful with code: code=[0, 1002], [Error from supplier (No availability), No response from supplier]",
+                "response unsuccessful with code: code=[1002], [The given key 'SEG6_' was not present in the dictionary.]",
             ],
             "code=[0, 1030]": [
                 "code=[0, 1030], [Error from supplier (Internal service error. Please contact support.)",
