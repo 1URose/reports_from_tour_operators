@@ -119,8 +119,8 @@ def print_detailed_tables(counters, unclassified, group_totals, overall_total):
             continue
         print(group_name)
         for key, value in sorted(group_counts.items(), key=lambda x: (-x[1], x[0])):
-            print(f"- {key} - {value} шт")
-            # print(f"{key}\t{value}")
+            # print(f"- {key} - {value} шт")
+            print(f"{key}\t{value}")
         print()
 
     if unclassified:
@@ -143,6 +143,9 @@ def print_detailed_tables(counters, unclassified, group_totals, overall_total):
 def get_pegast_tez_groups():
     return OrderedDict({
         "Наши ошибки ": OrderedDict({
+            "denied by rate-limiter": [# Общая
+                "request denied by rate-limier",
+            ],
             "write to read-only MySQL server": [ # Общая
                 "Error 1290 (HY000): The MySQL server is running with the --read-only option so it cannot execute this statement",
             ],
@@ -238,7 +241,7 @@ def get_pegast_tez_groups():
         }),
         "Ошибки ТО": OrderedDict({
             "Не найдена авиакомпания": [
-                "response unsuccessful with code: Не найдена авиакомпания (carrier=C6)."  # TEZTOUR
+                "response unsuccessful with code: Не найдена авиакомпания (carrier=C6)."  #TEZTOUR
             ],
             "invalid_xml_in_response": [
                 "response build_order decode unsuccessful with err xml unmarshal error",
@@ -248,8 +251,11 @@ def get_pegast_tez_groups():
             "failed to cast routes: empty result routes": [
                 "failed to cast routes: empty result routes",
             ],
-            "ParametersNotValid": [
+            "ParametersNotValid": [ #PEGAST
                 "fail in construct booking: api response error: ParametersNotValid"
+            ],
+            "PackageInactiveBookingPeriod": [ #PEGAST
+              "fail in construct booking: api response error: PackageInactiveBookingPeriod"
             ],
             "failed to verify certificate": [
                 "failed to verify certificate: x509: certificate has expired or is not yet valid",
@@ -315,6 +321,7 @@ def get_pegast_tez_groups():
                 "response unsuccessful with code: code=[1002], [Error while contacting the supplier. (42|Application|Too many opened conversations. Please close them and try again.)]",
                 "response unsuccessful with code: code=[1002], [An unexpected error occurred, please contact technical support.]",
                 "response unsuccessful with code: code=[1002], [No response from supplier]",
+                "response unsuccessful with code: code=[1002], [The given key 'SEG6_' was not present in the dictionary.]",
             ],
             "code=[1030]": [
                 "response unsuccessful with code: code=[1030], [Received an unexpected EOF or 0 bytes from the transport stream.]",
@@ -328,7 +335,7 @@ def get_pegast_tez_groups():
             ],
             "code=[0, 1002]": [
                 "response unsuccessful with code: code=[0, 1002], [Error from supplier (No availability), No response from supplier]",
-                "response unsuccessful with code: code=[1002], [The given key 'SEG6_' was not present in the dictionary.]",
+                "response unsuccessful with code: code=[1002, 0], [An unexpected error occurred, please contact technical support., Error from supplier (Unknown supplier error)]"
             ],
             "code=[0, 1030]": [
                 "code=[0, 1030], [Error from supplier (Internal service error. Please contact support.)",
