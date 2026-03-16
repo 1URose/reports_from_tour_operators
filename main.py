@@ -119,8 +119,8 @@ def print_detailed_tables(counters, unclassified, group_totals, overall_total):
             continue
         print(group_name)
         for key, value in sorted(group_counts.items(), key=lambda x: (-x[1], x[0])):
-            # print(f"- {key} - {value} шт")
-            print(f"{key}\t{value}")
+            print(f"- {key} - {value} шт")
+            # print(f"{key}\t{value}")
         print()
 
     if unclassified:
@@ -143,6 +143,9 @@ def print_detailed_tables(counters, unclassified, group_totals, overall_total):
 def get_pegast_tez_groups():
     return OrderedDict({
         "Наши ошибки ": OrderedDict({
+            "failed to get rate from db": [
+                "de = Internal desc = failed to get rate from db: Error 2013 (HY000): Lost connection to MySQL server during query",
+            ],
             "denied by rate-limiter": [# Общая
                 "request denied by rate-limier",
             ],
@@ -295,8 +298,9 @@ def get_pegast_tez_groups():
                 "response unsuccessful with code: 503",
                 "response unsuccessful with code: Произошла системная ошибка: Session/EntityManager is closed",
                 "response unsuccessful with code: Nemo currency is null!",
+                "Client received SOAP Fault from server: Cannot access a disposed object." #TEZTOUR
             ],
-            "code=[0]": [
+            "code=[0]": [ #TEZTOUR
                 "response unsuccessful with code: code=[0], [Error from supplier (Сервис временно недоступен. Повторите попытку через 60 секунд.)]",
                 "response unsuccessful with code: code=[0], [Error from supplier (Invalid Country Code )]",
                 "response unsuccessful with code: code=[0], [Error from supplier (Invalid Authorization )]",
@@ -314,16 +318,16 @@ def get_pegast_tez_groups():
                 "response unsuccessful with code: code=[0, 0], [Error from supplier (Internal service error. Please contact support.), Error from supplier ( )]",
                 "response unsuccessful with code: code=[0], [Error from supplier (Invalid Place of Departure Code )]",
             ],
-            "code=[1000]" : [
+            "code=[1000]" : [ #TEZTOUR
                 "response unsuccessful with code: code=[1000], [Infants count can not be more than adult count]",
             ],
-            "code=[1002]": [
+            "code=[1002]": [ #TEZTOUR
                 "response unsuccessful with code: code=[1002], [Error while contacting the supplier. (42|Application|Too many opened conversations. Please close them and try again.)]",
                 "response unsuccessful with code: code=[1002], [An unexpected error occurred, please contact technical support.]",
                 "response unsuccessful with code: code=[1002], [No response from supplier]",
                 "response unsuccessful with code: code=[1002], [The given key 'SEG6_' was not present in the dictionary.]",
             ],
-            "code=[1030]": [
+            "code=[1030]": [ #TEZTOUR
                 "response unsuccessful with code: code=[1030], [Received an unexpected EOF or 0 bytes from the transport stream.]",
                 "response unsuccessful with code: code=[1030], [The response ended prematurely. (ResponseEnded)]",
                 "response unsuccessful with code: code=[1030], [Authentication failed, see inner exception.]",
@@ -333,34 +337,34 @@ def get_pegast_tez_groups():
                 "response unsuccessful with code: code=[1030], [Invalid not empty response. Status description: Bad Gateway]",
                 "response unsuccessful with code: code=[1030], [Invalid not empty response. Status description: Internal Server Error]"
             ],
-            "code=[0, 1002]": [
+            "code=[0, 1002]": [ #TEZTOUR
                 "response unsuccessful with code: code=[0, 1002], [Error from supplier (No availability), No response from supplier]",
                 "response unsuccessful with code: code=[1002, 0], [An unexpected error occurred, please contact technical support., Error from supplier (Unknown supplier error)]"
             ],
-            "code=[0, 1030]": [
+            "code=[0, 1030]": [ #TEZTOUR
                 "code=[0, 1030], [Error from supplier (Internal service error. Please contact support.)",
                 "response unsuccessful with code: code=[1030], [Unable to read data from the transport connection: An existing connection was forcibly closed by the remote host..]",
                 "response unsuccessful with code: code=[1030], [Unable to read data from the transport connection: Удаленный хост принудительно разорвал существующее подключение..]",
             ],
-            "code=[1014]" : [
+            "code=[1014]" : [ #TEZTOUR
                 "response unsuccessful with code: code=[1014], [Error from supplier (JOURNEY SERVER: System problem (check OID))]",
             ],
-            "SystemTemporarilyUnavailable": [
+            "SystemTemporarilyUnavailable": [ #PEGAST
                 "SystemTemporarilyUnavailable"
             ],
-            "RequestFailedUnexpectedly": [
+            "RequestFailedUnexpectedly": [ #PEGAST
                 "RequestFailedUnexpectedly"
             ],
-            "BookingCannotBeConstructed": [
+            "BookingCannotBeConstructed": [ #PEGAST
                 "BookingCannotBeConstructed"
             ],
-            "PackageSpoNotActual": [
+            "PackageSpoNotActual": [ #PEGAST
                 "PackageSpoNotActual"
             ],
-            "PackageSpoInactiveBookingPeriod": [
+            "PackageSpoInactiveBookingPeriod": [ #PEGAST
                 "PackageSpoInactiveBookingPeriod",
             ],
-            "MaxBookingDateTimeExpired": [
+            "MaxBookingDateTimeExpired": [ #PEGAST
                 "MaxBookingDateTimeExpired",
             ],
             "concretized route has changed id": [
