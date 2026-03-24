@@ -317,6 +317,7 @@ def get_pegast_tez_groups():
                 "response unsuccessful with code: code=[0], [Error from supplier ( )]",
                 "response unsuccessful with code: code=[0, 0], [Error from supplier (Internal service error. Please contact support.), Error from supplier ( )]",
                 "response unsuccessful with code: code=[0], [Error from supplier (Invalid Place of Departure Code )]",
+                "response unsuccessful with code: code=[0], [Error from supplier (No flights)]",
             ],
             "code=[1000]" : [ #TEZTOUR
                 "response unsuccessful with code: code=[1000], [Infants count can not be more than adult count]",
@@ -335,7 +336,8 @@ def get_pegast_tez_groups():
                 "response unsuccessful with code: code=[1030], [Unable to read data from the transport connection: Удаленный хост принудительно разорвал существующее подключение..]",
                 "response unsuccessful with code: code=[1030], [A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond.]",
                 "response unsuccessful with code: code=[1030], [Invalid not empty response. Status description: Bad Gateway]",
-                "response unsuccessful with code: code=[1030], [Invalid not empty response. Status description: Internal Server Error]"
+                "response unsuccessful with code: code=[1030], [Invalid not empty response. Status description: Internal Server Error]",
+                "response unsuccessful with code: code=[1030], [Invalid not empty response. Status description: Request Time-out]",
             ],
             "code=[0, 1002]": [ #TEZTOUR
                 "response unsuccessful with code: code=[0, 1002], [Error from supplier (No availability), No response from supplier]",
@@ -348,6 +350,16 @@ def get_pegast_tez_groups():
             ],
             "code=[1014]" : [ #TEZTOUR
                 "response unsuccessful with code: code=[1014], [Error from supplier (JOURNEY SERVER: System problem (check OID))]",
+            ],
+            "Не найден пользователь (ID=null)": [
+                "response unsuccessful with code: Не найден пользователь (ID=null).",
+            ],
+            "response unsuccessful airport": [
+                "response unsuccessful with code: Не найден аэропорт (id=null).",
+            ],
+            "Unauthorized": [
+                "response unsuccessful with code: Unauthorized",
+                "request failed with supplier error: Пользователь не авторизован"
             ],
             "SystemTemporarilyUnavailable": [ #PEGAST
                 "SystemTemporarilyUnavailable"
@@ -381,14 +393,6 @@ def get_pegast_tez_groups():
             "empty round trip flight services": [
                 "empty round trip flight services",
             ],
-            "response unsuccessful airport": [
-                "response unsuccessful with code: Не найден аэропорт (id=null).",
-            ],
-            "Unauthorized": [
-                "response unsuccessful with code: Unauthorized",
-                "request failed with supplier error: Пользователь не авторизован"
-            ],
-
             "response build_order unsuccessful with err Post": [
                 "response build_order unsuccessful with err Post",
             ],
