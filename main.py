@@ -119,8 +119,8 @@ def print_detailed_tables(counters, unclassified, group_totals, overall_total):
             continue
         print(group_name)
         for key, value in sorted(group_counts.items(), key=lambda x: (-x[1], x[0])):
-            print(f"- {key} - {value} шт")
-            # print(f"{key}\t{value}")
+            # print(f"- {key} - {value} шт")
+            print(f"{key}\t{value}")
         print()
 
     if unclassified:
@@ -220,6 +220,10 @@ def get_pegast_tez_groups():
             ],
         }),
         "Неизвестно чьи ошибки": OrderedDict({
+            "TLS handshake timeout": [
+                "proxyconnect tcp: net/http: TLS handshake timeout",
+                "net/http: TLS handshake timeout",
+            ],
             "empty routes after cast": [
                 "empty routes after cast",
             ],
@@ -301,6 +305,8 @@ def get_pegast_tez_groups():
                 "Client received SOAP Fault from server: Cannot access a disposed object." #TEZTOUR
             ],
             "code=[0]": [ #TEZTOUR
+                "response unsuccessful with code: code=[0], [Error from supplier (No flights)]",
+                "response unsuccessful with code: code=[0, 0], [Error from supplier (Too many requests), Error from supplier (No flights)]",
                 "response unsuccessful with code: code=[0], [Error from supplier (Сервис временно недоступен. Повторите попытку через 60 секунд.)]",
                 "response unsuccessful with code: code=[0], [Error from supplier (Invalid Country Code )]",
                 "response unsuccessful with code: code=[0], [Error from supplier (Invalid Authorization )]",
@@ -340,8 +346,10 @@ def get_pegast_tez_groups():
                 "response unsuccessful with code: code=[1030], [Invalid not empty response. Status description: Request Time-out]",
             ],
             "code=[0, 1002]": [ #TEZTOUR
+                "response unsuccessful with code: code=[0, 1002], [Error from supplier (No flights), No response from supplier]",
                 "response unsuccessful with code: code=[0, 1002], [Error from supplier (No availability), No response from supplier]",
-                "response unsuccessful with code: code=[1002, 0], [An unexpected error occurred, please contact technical support., Error from supplier (Unknown supplier error)]"
+                "response unsuccessful with code: code=[1002, 0], [An unexpected error occurred, please contact technical support., Error from supplier (Unknown supplier error)]",
+                "response unsuccessful with code: code=[1002, 0], [No response from supplier, Error from supplier (No flights)]",
             ],
             "code=[0, 1030]": [ #TEZTOUR
                 "code=[0, 1030], [Error from supplier (Internal service error. Please contact support.)",
