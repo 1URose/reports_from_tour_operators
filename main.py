@@ -119,8 +119,8 @@ def print_detailed_tables(counters, unclassified, group_totals, overall_total):
             continue
         print(group_name)
         for key, value in sorted(group_counts.items(), key=lambda x: (-x[1], x[0])):
-            # print(f"- {key} - {value} шт")
-            print(f"{key}\t{value}")
+            print(f"- {key} - {value} шт")
+            # print(f"{key}\t{value}")
         print()
 
     if unclassified:
@@ -161,6 +161,7 @@ def get_pegast_tez_groups():
                 "failed to get extra gelios vietnam: no present match",
                 "failed to get extra gelios georgia ski: no present match",
                 "failed to get extra kupala vietnam: no present match",
+                "failed to get extra matching: no present match",
             ],
             "tour dropped by rules": [ # Общая
                 "tour dropped by rules",
@@ -287,7 +288,7 @@ def get_pegast_tez_groups():
             "...ORA-06512: at line 1": [
                 "ORA-06512",
             ],
-            "err parse regular flights: get empty flight pairs arr after parse": [
+            "get empty flight pairs arr after parse": [
                 "err parse regular flights: get empty flight pairs arr after parse",
             ],
             "internal server error": [
@@ -410,9 +411,11 @@ def get_pegast_tez_groups():
             "Residences not found in a special offer": [
                 "response unsuccessful with code: Residences not found in a special offer"
             ],
-            "parse to amount failed": [
-                "convert full price from calculate data err: parse  to amount failed",
-                "failed to parse price: parse  to amount failed",
+            "error convert full price, empty field price in calc_resp": [
+                "err calculate fuel charge for flights: convert full price from calculate data err: parse  to amount failed: strconv.ParseFloat:",
+            ],
+            "failed to cast insurances, insurance field price is empty": [
+                "failed to cast insurances: parse insurance price err: parse  to amount failed: strconv.ParseFloat:",
             ],
         }),
     })
@@ -680,6 +683,10 @@ def get_dynamic_groups():
             "component not available": [
                 "component not available",
             ],
+            "error create booking" : [
+                "error create booking: empty booking response",
+            ],
+
             "tour is not available for booking": [
                 "tour is not available for booking",
             ],
