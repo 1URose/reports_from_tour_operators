@@ -300,6 +300,7 @@ def get_pegast_tez_groups():
                 "response unsuccessful: code 503",
                 "response unsuccessful with code: systemError",
                 "The server sent HTTP status code 503: Service Unavailable",
+                "response unsuccessful with err Post \"https://api-ext.pegasys.pegast.com/PackageBookingCreation.svc\": Service Unavailable",
                 "response unsuccessful with code: 503",
                 "response unsuccessful with code: Произошла системная ошибка: Session/EntityManager is closed",
                 "response unsuccessful with code: Nemo currency is null!",
