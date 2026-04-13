@@ -684,6 +684,9 @@ def get_dynamic_groups():
             "component not available": [
                 "component not available",
             ],
+            "bundle ID mismatch": [
+                "while calling create booking: create booking error: by LT: " # Временная замена, так как не можем нормально распарсить  {"booking":null,"request_info":{"code":0,"error":{"cause":{"cause":null,"code":500,"detalization":{"critical":false,"http_status":0,"supplier_code":0},"message":"failed to create booking in meta middleware: failed to create booking in validation middleware: error finding or creating booking: handler failed to find or create booking: failed to find or create booking in logging middleware: failed to build booking: failed to load bundles: bundle ID mismatch: expected 01|230402Ic5vomOK::8eOnl9RT7O|310401toU9_O9q::MtLNoUW3::zEIsJwo9ff|090404B1JLvMZd::IgrXaK55yO, got 01|230402Ic5vomOK::8eOnl9RT7O|310401toU9_O9q::MtLNoUW3::j4dGgSsmLf|090404B1JLvMZd::IgrXaK55yO","type":"ERROR_TYPE_INTERNAL"},"code":500,"detalization":{"critical":false,"http_status":0,"supplier_code":0},"message":"Internal server error (from middleware)","type":"ERROR_TYPE_INTERNAL"},"request_id":"2a22ebef-f6fb-4b5a-a98c-8502a8c76574","warnings":[]}}
+            ],
             "error create booking" : [
                 "error create booking: empty booking response",
             ],
