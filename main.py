@@ -119,8 +119,8 @@ def print_detailed_tables(counters, unclassified, group_totals, overall_total):
             continue
         print(group_name)
         for key, value in sorted(group_counts.items(), key=lambda x: (-x[1], x[0])):
-            print(f"- {key} - {value} шт")
-            # print(f"{key}\t{value}")
+            # print(f"- {key} - {value} шт")
+            print(f"{key}\t{value}")
         print()
 
     if unclassified:
@@ -143,6 +143,12 @@ def print_detailed_tables(counters, unclassified, group_totals, overall_total):
 def get_pegast_tez_groups():
     return OrderedDict({
         "Наши ошибки ": OrderedDict({
+            "failed to reset fresh routes IDs": [
+                "failed to reset fresh routes IDs: failed to reset fresh routes IDs: READONLY You can't write against a read only replica."
+            ],
+            "error storing concretization tour price to cache": [
+                "error storing concretization tour price to cache: error saving data to redis: READONLY You can't write against a read only replica."
+            ],
             "Deadlock found when trying to get lock" : [
                 "failed to update package: Error 1213 (40001): Deadlock found when trying to get lock; try restarting transaction",
             ],
@@ -505,6 +511,7 @@ def get_dynamic_groups():
                 "tourist name is too short",
                 "empty full name",
                 "empty name",
+                "tourist name must be in cyrillic",
             ],
             "Невалидная фамилия": [
                 "empty surname"
