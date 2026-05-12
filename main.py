@@ -119,8 +119,8 @@ def print_detailed_tables(counters, unclassified, group_totals, overall_total):
             continue
         print(group_name)
         for key, value in sorted(group_counts.items(), key=lambda x: (-x[1], x[0])):
-            # print(f"- {key} - {value} шт")
-            print(f"{key}\t{value}")
+            print(f"- {key} - {value} шт")
+            # print(f"{key}\t{value}")
         print()
 
     if unclassified:
@@ -143,6 +143,9 @@ def print_detailed_tables(counters, unclassified, group_totals, overall_total):
 def get_pegast_tez_groups():
     return OrderedDict({
         "Наши ошибки ": OrderedDict({
+            "proxy server misbehaving": [
+                "dial tcp: lookup px-n.internal.lvtv.me. on 10.96.0.10:53: server misbehaving",
+            ],
             "failed to reset fresh routes IDs": [
                 "failed to reset fresh routes IDs: failed to reset fresh routes IDs: READONLY You can't write against a read only replica."
             ],
@@ -335,6 +338,7 @@ def get_pegast_tez_groups():
                 "response unsuccessful with code: code=[0, 0], [Error from supplier (Internal service error. Please contact support.), Error from supplier ( )]",
                 "response unsuccessful with code: code=[0], [Error from supplier (Invalid Place of Departure Code )]",
                 "response unsuccessful with code: code=[0], [Error from supplier (No flights)]",
+                "response unsuccessful with code: code=[0, 0], [Error from supplier (No flights), Error from supplier (Too many requests)]",
             ],
             "code=[1000]" : [ #TEZTOUR
                 "response unsuccessful with code: code=[1000], [Infants count can not be more than adult count]",
