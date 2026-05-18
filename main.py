@@ -119,8 +119,8 @@ def print_detailed_tables(counters, unclassified, group_totals, overall_total):
             continue
         print(group_name)
         for key, value in sorted(group_counts.items(), key=lambda x: (-x[1], x[0])):
-            print(f"- {key} - {value} шт")
-            # print(f"{key}\t{value}")
+            # print(f"- {key} - {value} шт")
+            print(f"{key}\t{value}")
         print()
 
     if unclassified:
@@ -260,6 +260,9 @@ def get_pegast_tez_groups():
             ]
         }),
         "Ошибки ТО": OrderedDict({
+            "FULL_PAID_FLAG": [ #TEZTOUR
+                "response unsuccessful with code: Произошла ошибка в вычислении FULL_PAID_FLAG.",
+            ],
             "Не найдена авиакомпания": [
                 "response unsuccessful with code: Не найдена авиакомпания (carrier=C6)."  #TEZTOUR
             ],
@@ -698,9 +701,6 @@ def get_dynamic_groups():
             "component not available": [
                 "component not available",
             ],
-            "bundle ID mismatch": [
-                "while calling create booking: create booking error: by LT: ", # Временная замена, так как не можем нормально распарсить  {"booking":null,"request_info":{"code":0,"error":{"cause":{"cause":null,"code":500,"detalization":{"critical":false,"http_status":0,"supplier_code":0},"message":"failed to create booking in meta middleware: failed to create booking in validation middleware: error finding or creating booking: handler failed to find or create booking: failed to find or create booking in logging middleware: failed to build booking: failed to load bundles: bundle ID mismatch: expected 01|230402Ic5vomOK::8eOnl9RT7O|310401toU9_O9q::MtLNoUW3::zEIsJwo9ff|090404B1JLvMZd::IgrXaK55yO, got 01|230402Ic5vomOK::8eOnl9RT7O|310401toU9_O9q::MtLNoUW3::j4dGgSsmLf|090404B1JLvMZd::IgrXaK55yO","type":"ERROR_TYPE_INTERNAL"},"code":500,"detalization":{"critical":false,"http_status":0,"supplier_code":0},"message":"Internal server error (from middleware)","type":"ERROR_TYPE_INTERNAL"},"request_id":"2a22ebef-f6fb-4b5a-a98c-8502a8c76574","warnings":[]}}
-            ],
             "deadlock detected": [
                 "while calling prebook: prebook error: by LT: pq: deadlock detected",
             ],
@@ -746,6 +746,11 @@ def get_dynamic_groups():
                 "EOF",
                 "prebook have expired ttl",
                 "Превышено время ожидания ответа от туроператора",
+                "proxyconnect tcp: net/http: TLS handshake timeout",
+                "net/http: TLS handshake timeout",
+            ],
+            "bundle ID mismatch": [
+                "while calling create booking: create booking error: by LT:", # Временная замена, так как не можем нормально распарсить  {"booking":null,"request_info":{"code":0,"error":{"cause":{"cause":null,"code":500,"detalization":{"critical":false,"http_status":0,"supplier_code":0},"message":"failed to create booking in meta middleware: failed to create booking in validation middleware: error finding or creating booking: handler failed to find or create booking: failed to find or create booking in logging middleware: failed to build booking: failed to load bundles: bundle ID mismatch: expected 01|230402Ic5vomOK::8eOnl9RT7O|310401toU9_O9q::MtLNoUW3::zEIsJwo9ff|090404B1JLvMZd::IgrXaK55yO, got 01|230402Ic5vomOK::8eOnl9RT7O|310401toU9_O9q::MtLNoUW3::j4dGgSsmLf|090404B1JLvMZd::IgrXaK55yO","type":"ERROR_TYPE_INTERNAL"},"code":500,"detalization":{"critical":false,"http_status":0,"supplier_code":0},"message":"Internal server error (from middleware)","type":"ERROR_TYPE_INTERNAL"},"request_id":"2a22ebef-f6fb-4b5a-a98c-8502a8c76574","warnings":[]}}
             ],
         }),
     })
