@@ -498,6 +498,10 @@ def get_dynamic_groups():
             "route not found in tour": [
                 "not found in tour"
             ],
+            "tour expired": [
+                "while calling concretize: while actualizing tour: tour expired"
+            ],
+
         }),
 
         # Invalid Params
@@ -553,14 +557,6 @@ def get_dynamic_groups():
             "unexpected end of JSON input": [
                 "unexpected end of JSON input",
             ],
-            "tour expired": [
-                "while actualizing tour: tour expired",
-                "while changing route: tour expired",
-                "by LT: One or more errors occurred. (Error from supplier)",
-                "by LT: 176242988882209831 Code - 0",
-                "Произошла ошибка при выполнении запроса актуализации",
-                "while selecting and concretizing route: tour expired",
-            ],
             "document expires before end of travel": [
                 "prebook error: by LT: document expires before end of travel",
             ],
@@ -580,6 +576,8 @@ def get_dynamic_groups():
                 "no similar route offer found",
                 "no similar one way flight offer found",
                 "no offers found for route actualization",
+                "while selecting and concretizing route: tour expired: by LT: no similar route offer found",
+                "while selecting and concretizing route: tour expired: by LT: no similar one way flight offer found",
             ],
             "no_similar_order_found": [
                 "similar order not found",
@@ -591,7 +589,9 @@ def get_dynamic_groups():
             ],
             "perepoisk": [
                 "request failed with supplier error: code 1167",
-                "Перепоиск не нашел рекомендаций",
+                "tour expired: by LT: Перепоиск не нашел рекомендаций. Пожалуйста, повторите поиск, PID",
+                "tour expired: by LT: Внимание! Предложение более недоступно, необходимо повторить поиск",
+                "tour expired: by LT: Перепоиск не дал результатов. Пожалуйста, создайте бронирование повторно, PID"
             ],
             "failed to call prebook": [
                 "failed to call prebook",
@@ -689,6 +689,22 @@ def get_dynamic_groups():
             "Предложение больше не действительно": [
                 "Предложение больше не действительно",
             ],
+            "Слишком много запросов" : [
+                "tour expired: by LT: Слишком много запросов. type",
+            ],
+            "Maximum simultanous connections" : [
+                "by LT: 15 error: Maximum simultanous connections",
+            ],
+
+            "tour expired": [
+                # "while calling concretize: while actualizing tour: tour expired",
+            #     "while actualizing tour: tour expired",
+            #     "while changing route: tour expired",
+            #     "by LT: One or more errors occurred. (Error from supplier)",
+            #     "by LT: 176242988882209831 Code - 0",
+            #     "Произошла ошибка при выполнении запроса актуализации",
+            #     "while selecting and concretizing route: tour expired",
+            ],
         }),
 
         # Dynamic Errors
@@ -710,15 +726,13 @@ def get_dynamic_groups():
             "error create booking" : [
                 "error create booking: empty booking response",
             ],
-
             "tour is not available for booking": [
                 "tour is not available for booking",
             ],
             "no routes found": [
                 "no routes found",
             ],
-            "empty booking response":
-            [
+            "empty booking response": [
                 "err check prebook: empty booking response",
             ],
             "Запрашиваемые рейсы неактуальны": [
@@ -751,6 +765,22 @@ def get_dynamic_groups():
                 "Превышено время ожидания ответа от туроператора",
                 "proxyconnect tcp: net/http: TLS handshake timeout",
                 "net/http: TLS handshake timeout",
+            ],
+            "Internal Server Error" : [
+                "by LT: Бронирование остановлено по причине: Internal Server Error",
+                "tour expired: by LT: Неизвестная ошибка(Ошибка работы с базой данных)"
+            ],
+            "response error" : [
+                "tour expired: by LT: response error"
+            ],
+            "no accommodations found": [
+                "tour expired: by LT: no accommodations found in actualization search by hotel"
+            ],
+            "no active actual routes": [
+                "tour expired: by LT: no active actual routes found with force method"
+            ],
+            "Не удалось подтвержить наличии свободных мест на перелет" : [
+                "tour expired: by LT: К сожалению, мы не получили подтверждение о наличии свободных мест на этом перелёте."
             ],
             "bundle ID mismatch": [
                 "while calling create booking: create booking error: by LT:", # Временная замена, так как не можем нормально распарсить  {"booking":null,"request_info":{"code":0,"error":{"cause":{"cause":null,"code":500,"detalization":{"critical":false,"http_status":0,"supplier_code":0},"message":"failed to create booking in meta middleware: failed to create booking in validation middleware: error finding or creating booking: handler failed to find or create booking: failed to find or create booking in logging middleware: failed to build booking: failed to load bundles: bundle ID mismatch: expected 01|230402Ic5vomOK::8eOnl9RT7O|310401toU9_O9q::MtLNoUW3::zEIsJwo9ff|090404B1JLvMZd::IgrXaK55yO, got 01|230402Ic5vomOK::8eOnl9RT7O|310401toU9_O9q::MtLNoUW3::j4dGgSsmLf|090404B1JLvMZd::IgrXaK55yO","type":"ERROR_TYPE_INTERNAL"},"code":500,"detalization":{"critical":false,"http_status":0,"supplier_code":0},"message":"Internal server error (from middleware)","type":"ERROR_TYPE_INTERNAL"},"request_id":"2a22ebef-f6fb-4b5a-a98c-8502a8c76574","warnings":[]}}
