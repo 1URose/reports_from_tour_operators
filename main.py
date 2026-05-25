@@ -119,8 +119,8 @@ def print_detailed_tables(counters, unclassified, group_totals, overall_total):
             continue
         print(group_name)
         for key, value in sorted(group_counts.items(), key=lambda x: (-x[1], x[0])):
-            # print(f"- {key} - {value} шт")
-            print(f"{key}\t{value}")
+            print(f"- {key} - {value} шт")
+            # print(f"{key}\t{value}")
         print()
 
     if unclassified:
@@ -143,6 +143,9 @@ def print_detailed_tables(counters, unclassified, group_totals, overall_total):
 def get_pegast_tez_groups():
     return OrderedDict({
         "Наши ошибки ": OrderedDict({
+            "package not found into db": [
+                "error building domain package: package not found",
+            ],
             "proxy server misbehaving": [
                 "dial tcp: lookup px-n.internal.lvtv.me. on 10.96.0.10:53: server misbehaving",
             ],
