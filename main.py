@@ -119,8 +119,8 @@ def print_detailed_tables(counters, unclassified, group_totals, overall_total):
             continue
         print(group_name)
         for key, value in sorted(group_counts.items(), key=lambda x: (-x[1], x[0])):
-            print(f"- {key} - {value} шт")
-            # print(f"{key}\t{value}")
+            # print(f"- {key} - {value} шт")
+            print(f"{key}\t{value}")
         print()
 
     if unclassified:
@@ -345,6 +345,10 @@ def get_pegast_tez_groups():
                 "response unsuccessful with code: code=[0], [Error from supplier (Invalid Place of Departure Code )]",
                 "response unsuccessful with code: code=[0], [Error from supplier (No flights)]",
                 "response unsuccessful with code: code=[0, 0], [Error from supplier (No flights), Error from supplier (Too many requests)]",
+                "response unsuccessful with code: code=[0, 0], [Error from supplier (No flights), Error from supplier (Unknown accel aero error)]",
+                "response unsuccessful with code: code=[0, 0], [Error from supplier (Unknown accel aero error), Error from supplier (No flights)]",
+                "response unsuccessful with code: code=[0, 0], [Error from supplier (Unknown accel aero error), Error from supplier (Too many requests)]",
+                "response unsuccessful with code: code=[0], [Error from supplier (XID 14988EA2A80 - HTTP: host ek-os-servicebagency.prod.proscloud.com on port 443 - socket connect failed -5990)]",
             ],
             "code=[1000]" : [ #TEZTOUR
                 "response unsuccessful with code: code=[1000], [Infants count can not be more than adult count]",
@@ -371,6 +375,8 @@ def get_pegast_tez_groups():
                 "response unsuccessful with code: code=[0, 1002], [Error from supplier (No availability), No response from supplier]",
                 "response unsuccessful with code: code=[1002, 0], [An unexpected error occurred, please contact technical support., Error from supplier (Unknown supplier error)]",
                 "response unsuccessful with code: code=[1002, 0], [No response from supplier, Error from supplier (No flights)]",
+                "response unsuccessful with code: code=[1002, 0], [No response from supplier, Error from supplier (Unknown accel aero error)]",
+                "response unsuccessful with code: code=[0, 1002], [Error from supplier (Unknown accel aero error), No response from supplier]",
             ],
             "code=[0, 1030]": [ #TEZTOUR
                 "code=[0, 1030], [Error from supplier (Internal service error. Please contact support.)",
@@ -768,7 +774,10 @@ def get_dynamic_groups():
             ],
             "Internal Server Error" : [
                 "by LT: Бронирование остановлено по причине: Internal Server Error",
-                "tour expired: by LT: Неизвестная ошибка(Ошибка работы с базой данных)"
+                "tour expired: by LT: Неизвестная ошибка(Ошибка работы с базой данных)",
+                'by LT: //meta.online-express.ru/api/v2/accommodations/search?checkInDate=2026-06-01&checkOutDate=2026-06-18&currency=RUB&hotelId=224669&rooms%5B0%5D%5Badults%5D=2&rooms%5B0%5D%5Bchildren%5D=0": Service Unavailable',
+                "tour expired: by LT: expected element type <HotelPricingResponse2> but have <html>",
+                'tour expired: by LT: short_rus="2 места", rus="2 места", short_eng="", eng=""',
             ],
             "response error" : [
                 "tour expired: by LT: response error"
