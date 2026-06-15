@@ -119,8 +119,8 @@ def print_detailed_tables(counters, unclassified, group_totals, overall_total):
             continue
         print(group_name)
         for key, value in sorted(group_counts.items(), key=lambda x: (-x[1], x[0])):
-            # print(f"- {key} - {value} шт")
-            print(f"{key}\t{value}")
+            print(f"- {key} - {value} шт")
+            # print(f"{key}\t{value}")
         print()
 
     if unclassified:
@@ -541,7 +541,8 @@ def get_dynamic_groups():
                 "invalid document number",
                 "one or more tourists got the same documents info",
                 "empty passport number",
-                "non-expired passport required"
+                "non-expired passport required",
+                "prebook error: by LT: birthday certificate or international passport required"
             ],
             "Невалидная почта": [
                 "validate client params err: empty email"
