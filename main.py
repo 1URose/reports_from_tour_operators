@@ -472,7 +472,6 @@ def get_dynamic_groups():
                 "connect: connection refused",
                 "error getting package by id: query failed: invalid connection",
             ],
-
         }),
 
         # Internal Errors
