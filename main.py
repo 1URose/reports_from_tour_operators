@@ -201,7 +201,6 @@ def get_pegast_tez_groups():
                 "error writing to cache: error in routes: failed to reset fresh routes IDs: failed to reset fresh routes IDs: dial tcp 62.84.125.225:6380: i/o timeout",
                 "failed to update duplicates created_at: failed to perform bulk write operation: must provide at least one element in input slice",
             ],
-
             "hotel has unavailable status": [
                 "hotel has unavailable status",
             ],
@@ -211,12 +210,9 @@ def get_pegast_tez_groups():
             "no children to pick from": [
                 "no children to pick from",
             ],
-
             "sql: no rows in result set": [
               "query failed: sql: no rows in result set",
             ],
-
-
             "response unsuccessful with code: 404": [
                 "response unsuccessful with code: 404",
             ],
