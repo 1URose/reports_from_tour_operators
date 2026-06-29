@@ -513,7 +513,6 @@ def get_dynamic_groups():
                 "failed to create new booking: invalid phone number",
                 "empty phone",
                 "invalid phone",
-                "invalid length",
             ],
             "invalid_params_invalid_date": [
                 "invalid birthday, it should be",
@@ -541,6 +540,7 @@ def get_dynamic_groups():
                 "empty passport number",
                 "non-expired passport required",
                 "birthday certificate or international passport required",
+                "dynamics response error: by LT: document has invalid number: invalid length",
             ],
             "Невалидная почта": [
                 "validate client params err: empty email"
