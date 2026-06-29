@@ -119,8 +119,8 @@ def print_detailed_tables(counters, unclassified, group_totals, overall_total):
             continue
         print(group_name)
         for key, value in sorted(group_counts.items(), key=lambda x: (-x[1], x[0])):
-            print(f"- {key} - {value} шт")
-            # print(f"{key}\t{value}")
+            # print(f"- {key} - {value} шт")
+            print(f"{key}\t{value}")
         print()
 
     if unclassified:
@@ -580,8 +580,8 @@ def get_dynamic_groups():
                 "no similar route offer found",
                 "no similar one way flight offer found",
                 "no offers found for route actualization",
-                "while selecting and concretizing route: tour expired: by LT: no similar route offer found",
-                "while selecting and concretizing route: tour expired: by LT: no similar one way flight offer found",
+                "while selecting and concretizing route: dynamics response error: by LT: no similar route offer found",
+                "while selecting and concretizing route: dynamics response error: by LT: no similar one way flight offer found",
             ],
             "no_similar_order_found": [
                 "similar order not found",
@@ -593,11 +593,13 @@ def get_dynamic_groups():
             ],
             "perepoisk": [
                 "request failed with supplier error: code 1167",
-                "tour expired: by LT: Перепоиск не нашел рекомендаций. Пожалуйста, повторите поиск, PID",
-                "tour expired: by LT: Внимание! Предложение более недоступно, необходимо повторить поиск",
-                "tour expired: by LT: Перепоиск не дал результатов. Пожалуйста, создайте бронирование повторно, PID",
+                "dynamics response error: by LT: Перепоиск не нашел рекомендаций. Пожалуйста, повторите поиск, PID",
+                "dynamics response error: by LT: Внимание! Предложение более недоступно, необходимо повторить поиск",
+                "dynamics response error: by LT: Перепоиск не дал результатов. Пожалуйста, создайте бронирование повторно, PID",
                 "dynamics response error: by LT: Перепоиск не нашел рекомендаций. Пожалуйста, повторите поиск, PID",
                 "dynamics response error: by LT: Система не может подтвердить класс бронирования. Пожалуйста, выберите другой перелёт, PID",
+                "dynamics response error: by LT: Сервис временно недоступен. Пожалуйста, повторите запрос через несколько минут, PID",
+                "dynamics response error: by LT: Exceeded number of requests. Contact your supervisor., PID",
             ],
             "failed to call prebook": [
                 "failed to call prebook",
@@ -688,7 +690,7 @@ def get_dynamic_groups():
                 "forward and backward flights must have the same number of adults"
             ],
             "error in XML document": [
-                "tour expired: by LT: There is an error in XML document",
+                "dynamics response error: by LT: There is an error in XML document",
             ],
             "no suitable routes found in actualization answer": [
                 "no suitable routes found in actualization answer"
@@ -697,7 +699,7 @@ def get_dynamic_groups():
                 "Предложение больше не действительно",
             ],
             "Слишком много запросов" : [
-                "tour expired: by LT: Слишком много запросов. type",
+                "dynamics response error: by LT: Слишком много запросов. type",
             ],
             "Maximum simultanous connections" : [
                 "by LT: 15 error: Maximum simultanous connections",
@@ -761,6 +763,12 @@ def get_dynamic_groups():
             "different_organizations": [
                 "different organizations in bundle",
             ],
+            "unknown organization": [
+                "by LT: invalid organization: unknown organization",
+            ],
+            "error getting component from cache": [
+                "error getting component from cache",
+            ],
             "timeout": [
                 "context deadline exceeded",
                 "couldn&#39;t actualize component",
@@ -778,26 +786,29 @@ def get_dynamic_groups():
             ],
             "Internal Server Error" : [
                 "by LT: Бронирование остановлено по причине: Internal Server Error",
-                "tour expired: by LT: Неизвестная ошибка(Ошибка работы с базой данных)",
+                "dynamics response error: by LT: Неизвестная ошибка(Ошибка работы с базой данных)",
                 'by LT: //meta.online-express.ru/api/v2/accommodations/search?checkInDate=2026-06-01&checkOutDate=2026-06-18&currency=RUB&hotelId=224669&rooms%5B0%5D%5Badults%5D=2&rooms%5B0%5D%5Bchildren%5D=0": Service Unavailable',
-                "tour expired: by LT: expected element type <HotelPricingResponse2> but have <html>",
-                'tour expired: by LT: short_rus="2 места", rus="2 места", short_eng="", eng=""',
-                "dynamics response error: by LT: expected element type <tours> but have <html>"
+                "dynamics response error: by LT: expected element type <HotelPricingResponse2> but have <html>",
+                'dynamics response error: by LT: short_rus="2 места", rus="2 места", short_eng="", eng=""',
+                "dynamics response error: by LT: expected element type <tours> but have <html>",
+                "dynamics response error: by LT: expected element type <Envelope> but have <html>",
+                "dynamics response error: by LT: code = Unavailable desc = upstream connect error or disconnect/reset before headers. reset reason",
+                "dynamics response error: by LT: Разрыв соединения с системой бронирования. Если Вы пытались выписать или аннулировать билет, то необходимо обратиться в колл-центр для проверки статуса бронирования. Code - 0",
             ],
             "no_available_rates": [
                 "dynamics response error: by LT: response error",
             ],
             "response error" : [
-                "tour expired: by LT: response error"
+                "dynamics response error: by LT: response error"
             ],
             "no accommodations found": [
-                "tour expired: by LT: no accommodations found in actualization search by hotel"
+                "dynamics response error: by LT: no accommodations found in actualization search by hotel"
             ],
             "no active actual routes": [
-                "tour expired: by LT: no active actual routes found with force method"
+                "dynamics response error: by LT: no active actual routes found with force method"
             ],
             "Не удалось подтвержить наличии свободных мест на перелет" : [
-                "tour expired: by LT: К сожалению, мы не получили подтверждение о наличии свободных мест на этом перелёте."
+                "dynamics response error: by LT: К сожалению, мы не получили подтверждение о наличии свободных мест на этом перелёте."
             ],
             "bundle ID mismatch": [
                 "while calling create booking: create booking error: by LT:", # Временная замена, так как не можем нормально распарсить  {"booking":null,"request_info":{"code":0,"error":{"cause":{"cause":null,"code":500,"detalization":{"critical":false,"http_status":0,"supplier_code":0},"message":"failed to create booking in meta middleware: failed to create booking in validation middleware: error finding or creating booking: handler failed to find or create booking: failed to find or create booking in logging middleware: failed to build booking: failed to load bundles: bundle ID mismatch: expected 01|230402Ic5vomOK::8eOnl9RT7O|310401toU9_O9q::MtLNoUW3::zEIsJwo9ff|090404B1JLvMZd::IgrXaK55yO, got 01|230402Ic5vomOK::8eOnl9RT7O|310401toU9_O9q::MtLNoUW3::j4dGgSsmLf|090404B1JLvMZd::IgrXaK55yO","type":"ERROR_TYPE_INTERNAL"},"code":500,"detalization":{"critical":false,"http_status":0,"supplier_code":0},"message":"Internal server error (from middleware)","type":"ERROR_TYPE_INTERNAL"},"request_id":"2a22ebef-f6fb-4b5a-a98c-8502a8c76574","warnings":[]}}
