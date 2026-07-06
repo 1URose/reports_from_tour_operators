@@ -119,8 +119,8 @@ def print_detailed_tables(counters, unclassified, group_totals, overall_total):
             continue
         print(group_name)
         for key, value in sorted(group_counts.items(), key=lambda x: (-x[1], x[0])):
-            # print(f"- {key} - {value} шт")
-            print(f"{key}\t{value}")
+            print(f"- {key} - {value} шт")
+            # print(f"{key}\t{value}")
         print()
 
     if unclassified:
@@ -259,6 +259,9 @@ def get_pegast_tez_groups():
             ]
         }),
         "Ошибки ТО": OrderedDict({
+            "Нет активной учетной записи" :[
+                "api response error: ApiUserNotActive",
+            ],
             "FULL_PAID_FLAG": [ #TEZTOUR
                 "response unsuccessful with code: Произошла ошибка в вычислении FULL_PAID_FLAG.",
             ],
@@ -597,9 +600,9 @@ def get_dynamic_groups():
                 "dynamics response error: by LT: Внимание! Предложение более недоступно, необходимо повторить поиск",
                 "dynamics response error: by LT: Перепоиск не дал результатов. Пожалуйста, создайте бронирование повторно, PID",
                 "dynamics response error: by LT: Перепоиск не нашел рекомендаций. Пожалуйста, повторите поиск, PID",
-                "dynamics response error: by LT: Система не может подтвердить класс бронирования. Пожалуйста, выберите другой перелёт, PID",
-                "dynamics response error: by LT: Сервис временно недоступен. Пожалуйста, повторите запрос через несколько минут, PID",
                 "dynamics response error: by LT: Exceeded number of requests. Contact your supervisor., PID",
+                "dynamics response error: by LT: Результаты поиска устарели, пожалуйста, повторите поиск. Code - 0",
+                "dynamics response error: by LT: Параметры поиска устарели, пожалуйста, повторите поиск. Code - 0",
             ],
             "failed to call prebook": [
                 "failed to call prebook",
@@ -654,7 +657,8 @@ def get_dynamic_groups():
             ],
             "503": [
                 "status: 503",
-                "Сервер перегружен. Пожалуйста, повторите запрос"
+                "Сервер перегружен. Пожалуйста, повторите запрос",
+                "dynamics response error: by LT: request failed with status code 503",
             ],
             "no_error_debug": [
                 "NO_ERROR, debug data",
@@ -785,6 +789,10 @@ def get_dynamic_groups():
                 "net/http: TLS handshake timeout",
             ],
             "Internal Server Error" : [
+                "dynamics response error: by LT: Система не может подтвердить класс бронирования. Пожалуйста, выберите другой перелёт, PID",
+                "dynamics response error: by LT: Сервис временно недоступен. Пожалуйста, повторите запрос через несколько минут, PID",
+                "dynamics response error: by LT: Не удалось обработать запрос. Передайте PID этого ответа нашему саппорту., PID",
+                "dynamics response error: by LT: Неизвестная ошибка(Сервер занят. Пожалуйста, повторите попытку позже.)",
                 "by LT: Бронирование остановлено по причине: Internal Server Error",
                 "dynamics response error: by LT: Неизвестная ошибка(Ошибка работы с базой данных)",
                 'by LT: //meta.online-express.ru/api/v2/accommodations/search?checkInDate=2026-06-01&checkOutDate=2026-06-18&currency=RUB&hotelId=224669&rooms%5B0%5D%5Badults%5D=2&rooms%5B0%5D%5Bchildren%5D=0": Service Unavailable',
@@ -794,6 +802,7 @@ def get_dynamic_groups():
                 "dynamics response error: by LT: expected element type <Envelope> but have <html>",
                 "dynamics response error: by LT: code = Unavailable desc = upstream connect error or disconnect/reset before headers. reset reason",
                 "dynamics response error: by LT: Разрыв соединения с системой бронирования. Если Вы пытались выписать или аннулировать билет, то необходимо обратиться в колл-центр для проверки статуса бронирования. Code - 0",
+                "by LT: failed to get place supplier credentials from server: credentials not found"
             ],
             "no_available_rates": [
                 "dynamics response error: by LT: response error",
