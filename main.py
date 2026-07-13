@@ -259,6 +259,11 @@ def get_pegast_tez_groups():
             ]
         }),
         "Ошибки ТО": OrderedDict({
+            "Ошибка обновления SID": [
+                "failed to renew SID: request failed with supplier error: Connections could not be acquired from the underlying database!",
+                "failed to renew sid: request failed with supplier error: Connections could not be acquired from the underlying database!",
+                "failed to renew SID: request failed with supplier error: An attempt by a client to checkout a Connection has timed out.",
+            ],
             "Нет активной учетной записи" :[
                 "api response error: ApiUserNotActive",
             ],
@@ -596,6 +601,7 @@ def get_dynamic_groups():
             ],
             "perepoisk": [
                 "request failed with supplier error: code 1167",
+                "dynamics response error: by LT: Поиск устарел, попробуйте произвести его ещё раз!",
                 "dynamics response error: by LT: Перепоиск не нашел рекомендаций. Пожалуйста, повторите поиск, PID",
                 "dynamics response error: by LT: Внимание! Предложение более недоступно, необходимо повторить поиск",
                 "dynamics response error: by LT: Перепоиск не дал результатов. Пожалуйста, создайте бронирование повторно, PID",
@@ -648,7 +654,8 @@ def get_dynamic_groups():
                 "response unsuccessful with code: 500",
                 "request failed with status code 500",
                 "by LT: Неизвестная ошибка(Ошибка работы с базой данных)",
-                "by LT: E0500, message: Предложение недоступно"
+                "by LT: E0500, message: Предложение недоступно",
+                "dynamics response error: by LT: Неизвестная ошибка системы онлайн бронирования туроператора. Повторите попытку через несколько минут.(HTTP Response 403 Forbidden)",
             ],
             "502": [
                 "response unsuccessful with code: 502",
