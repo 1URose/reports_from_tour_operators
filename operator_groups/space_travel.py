@@ -4,149 +4,59 @@ from collections import OrderedDict
 def get_space_travel_groups():
     return OrderedDict({
         "Наши ошибки": OrderedDict({
-            "package_expired": [
+            "package_is_expired": [
                 "package is expired",
-                "tour expired",
             ],
-            "rules_drop": [
-                "tour dropped by rules",
-                "error applying rules to tour",
+            "empty_routes_after_cast": [
+                "error getting routes: empty routes after cast",
             ],
-            "route_cache_miss": [
-                "error finding route in cache",
-                "route not found in cache",
+            "empty_transports_after_pick": [
+                "empty transports after pick",
             ],
-            "operator_mismatch": [
-                "package and route have different operators",
-            ],
-            "empty_routes": [
-                "empty routes after cast",
-                "failed to cast routes: empty result routes",
-            ],
-            "rate_error": [
-                "no rate",
-                "failed to get rate",
-                "unknown currency",
-            ],
-            "db_connection": [
-                "error getting package by id: query failed: invalid connection",
-                "query failed: dial tcp",
-                "Lost connection to MySQL server",
-                "connect: connection refused",
-            ],
-            "cache_write": [
-                "failed to insert routes",
-                "failed to reset fresh routes IDs",
-                "error writing to cache",
-                "READONLY You can't write against a read only replica",
+            "proxy_connection_refused": [
+                "proxyconnect tcp: dial tcp",
             ],
         }),
         "Неизвестно чьи ошибки": OrderedDict({
-            "timeout": [
-                "context deadline exceeded",
-                "context cancelled",
-                "context canceled",
-                "Client.Timeout exceeded while awaiting headers",
-                "i/o timeout",
-                "TLS handshake timeout",
-            ],
-            "transport": [
-                "connection reset by peer",
-                "connection refused",
-                "connection timed out",
-                "no route to host",
-                "unexpected EOF",
-                "EOF",
-            ],
-            "invalid_response": [
-                "invalid character '<' looking for beginning of value",
-                "json unmarshal error",
-                "xml unmarshal error",
-                "expected element type",
-                "unexpected end of JSON input",
-            ],
-            "empty_response": [
-                "empty body response",
-                "empty booking response",
-                "empty prebook response",
-                "api response error: None",
+            "connection_error": [
+                "error in ReadAll: unexpected EOF",
             ],
         }),
         "Ошибки ТО SpaceTravel": OrderedDict({
-            "fare_expired": [
-                "fare expired",
-                "tariff expired",
-                "тариф устарел",
-                "тариф изменился",
-                "price has changed",
-                "price changed",
+            "timeout": [
+                "context cancelled (timeout)",
             ],
-            "no_seats": [
-                "no seats",
-                "No flights",
-                "no flights",
-                "No availability",
-                "Нет мест",
-                "Нет мест на рейсе",
-                "рейсы отсутствуют",
+            "bad_gateway_response": [
+                "unexpected content type: text/html, status: 502",
+                "unexpected content type: text/html;charset=utf-8, status: 502",
+                "request failed with status code 502",
+            ],
+            "internal_server_error": [
+                "Внутренняя ошибка сервера приложений",
             ],
             "offer_not_actual": [
-                "offer not found",
-                "similar offer not found",
-                "Предложение более недоступно",
-                "Предложение недоступно",
-                "Поиск устарел",
-                "Параметры поиска устарели",
+                "Предложение больше не действительно",
             ],
-            "pnr_or_booking_not_created": [
-                "PNR",
-                "pnr",
-                "booking not created",
-                "Невозможно создать бронирование",
-                "Не удалось создать бронирование",
+            "invalid_supplier_response": [
+                "invalid result structure: invalid claim document: only one set of hotel data expected",
             ],
-            "ticketing_limit": [
-                "time limit",
-                "ticketing time limit",
-                "Истек таймлимит",
-                "срок выписки истек",
+            "no_flights": [
+                "Рейсы не найдены",
             ],
-            "gds_or_supplier_error": [
-                "GDS",
-                "Amadeus",
-                "Sabre",
-                "Galileo",
-                "supplier response error",
-                "supplier error",
+            "price_not_found": [
+                "Не найдена цена",
             ],
-            "authorization": [
-                "Unauthorized",
-                "Пользователь не авторизован",
-                "authorization failed",
-                "Session expired",
-                "Invalid Authorization",
+            "supplier_busy": [
+                "Сервер занят. Пожалуйста, повторите попытку позже.",
             ],
-            "tourist_validation": [
-                "invalid tourist",
-                "tourist name",
-                "empty full name",
-                "invalid phone",
-                "empty email",
+            "supplier_dns_error": [
+                "Could not resolve host: andr.space-travel.ru",
             ],
-            "document_validation": [
-                "document info is duplicated",
-                "document number is invalid",
-                "invalid document number",
-                "document expires before end of travel",
-                "birth certificate cannot be used after age",
+            "transport_booking_failed": [
+                "Невозможно забронировать транспорт",
             ],
-            "supplier_5xx": [
-                "Внутренняя ошибка сервера",
-                "Internal server error",
-                "request failed with status code 500",
-                "request failed with status code 502",
-                "request failed with status code 503",
-                "Service Unavailable",
+            "supplier_response_500": [
+                "unexpected content type: text/html; charset=utf-8, status: 500",
             ],
         }),
     })
