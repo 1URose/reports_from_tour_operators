@@ -162,6 +162,7 @@ def get_dynamic_groups():
                 "dynamics response error: by LT: Exceeded number of requests. Contact your supervisor., PID",
                 "dynamics response error: by LT: Результаты поиска устарели, пожалуйста, повторите поиск. Code - 0",
                 "dynamics response error: by LT: Параметры поиска устарели, пожалуйста, повторите поиск. Code - 0",
+                "dynamics response error: by LT: Поиск устарел, попробуйте произвести его ещё раз!",
             ],
             "failed to call prebook": [
                 "failed to call prebook",
@@ -240,6 +241,7 @@ def get_dynamic_groups():
                 "by LT: Что-то пошло не так",
                 "не найдены или срок действия истек",
                 "by LT: This room rate has expired!, status",
+                "by LT: 8546: Предложение не актуально!",
             ],
             "retrieving detail error": [
                 "retrieving detail error",
@@ -257,7 +259,11 @@ def get_dynamic_groups():
                 "dynamics response error: by LT: There is an error in XML document",
             ],
             "no suitable routes found in actualization answer": [
-                "no suitable routes found in actualization answer"
+                "no suitable routes found in actualization answer",
+                "dynamics response error: by LT: Остутствуют результаты в ответе актуализации",
+            ],
+            "No offers available": [
+                "dynamics response error: by LT: No offers available| Code - 0",
             ],
             "Предложение больше не действительно": [
                 "Предложение больше не действительно",
@@ -358,6 +364,8 @@ def get_dynamic_groups():
             ],
             "no_available_rates": [
                 "dynamics response error: by LT: response error",
+                "dynamics response error: by LT: minimum retail price is empty for offer",
+                "dynamics response error: by LT: status - error, error - no_available_rates, debug - , status",
             ],
             "response error" : [
                 "dynamics response error: by LT: response error"
