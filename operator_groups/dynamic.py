@@ -26,6 +26,9 @@ def get_dynamic_groups():
                 "connect: connection refused",
                 "error getting package by id: query failed: invalid connection",
             ],
+            "no rows package in result set": [
+                "error getting package by id: query failed: sql: no rows in result set",
+            ]
         }),
 
         # Internal Errors
@@ -67,6 +70,9 @@ def get_dynamic_groups():
             "Ошибка парсинга даты": [
                 "error parsing in 02.01.2006 format: parsing time \"29.02.2030\": day out of range"
             ],
+            "different operators": [
+                "error validating prebook route operator: package and route have different operators: 8 - 78",
+            ]
         }),
 
         # Invalid Params
@@ -163,6 +169,7 @@ def get_dynamic_groups():
                 "dynamics response error: by LT: Результаты поиска устарели, пожалуйста, повторите поиск. Code - 0",
                 "dynamics response error: by LT: Параметры поиска устарели, пожалуйста, повторите поиск. Code - 0",
                 "dynamics response error: by LT: Поиск устарел, попробуйте произвести его ещё раз!",
+                "dynamics response error: by LT: Найденные цены устарели, пожалуйста сделайте поиск заново",
             ],
             "failed to call prebook": [
                 "failed to call prebook",
@@ -361,6 +368,7 @@ def get_dynamic_groups():
                 "by LT: failed to get place supplier credentials from server: credentials not found",
                 "dynamics response error: by LT: SoapServer->handle()",
                 "dynamics response error: by LT: Внутренняя ошибка сервера, обратитесь к туроператору",
+                "by LT: parsing \"PE\": invalid syntax",
             ],
             "no_available_rates": [
                 "dynamics response error: by LT: response error",
